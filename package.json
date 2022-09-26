@@ -1,0 +1,22 @@
+{
+  "name": "k8s-tetris",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CoCo9122/k8s-tetris.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CoCo9122/k8s-tetris/issues"
+  },
+  "homepage": "https://github.com/CoCo9122/k8s-tetris#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
