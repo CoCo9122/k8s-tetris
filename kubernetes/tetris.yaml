@@ -1,0 +1,85 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: tetris
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tetris-deployment
+  namespace: tetris
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tetris
+  template:
+    metadata:
+      labels:
+        app: tetris
+    spec:
+      initContainers:
+      - name: git-pull-initContainer
+        image: willdockerhub/git-sync:v3.5.0
+        env:
+        - name: GIT_SYNC_REPO
+          value: https://github.com/CoCo9122/k8s-tetris.git
+        - name: GIT_SYNC_BRANCH
+          value: main
+        - name: GIT_SYNC_DEST
+          value: app
+        - name: GIT_SYNC_ONE_TIME
+          value: "true"
+        volumeMounts:
+        - name: vol
+          mountPath: /tmp/git/app/
+      containers:
+      - name: tetris-contianer
+        image: coco9122/nodejs-armv7:0.0.1
+        resources:
+          limits:
+            memory: "32Mi"
+            cpu: "50m"
+        ports:
+        - containerPort: 3000
+        volumeMounts:
+        - name: vol
+          mountPath: /usr/src/
+      - name: git-pull-container
+        image: willdockerhub/git-sync:v3.5.0
+        env:
+        - name: GIT_SYNC_REPO
+          value: https://github.com/CoCo9122/k8s-tetris.git
+        - name: GIT_SYNC_BRANCH
+          value: main
+        - name: GIT_SYNC_DEST
+          value: app
+        resources:
+          limits:
+            memory: "32Mi"
+            cpu: "50m"
+        volumeMounts:
+        - name: vol
+          mountPath: /tmp/git/
+      volumes:
+      - name: vol
+        emptyDir: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: tetris-service
+  namespace: tetris
+spec:
+  selector:
+    app: tetris
+  ports:
+  - name: http
+    protocol: TCP
+    port: 3000
+    targetPort: 3000
+  type: LoadBalancer
