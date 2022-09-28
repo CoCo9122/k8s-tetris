@@ -1,12 +1,53 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>TOPページ</title>
-  </head>
-  <body>
-    <div>
-      <h1>Hello World!</h1>
+<html lang="js">
+<head>
+    <meta charset="UTF-8">
+    <title>TETRiS</title>
+    <link rel="stylesheet" href="css/Reset.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="header">
+
     </div>
-  </body>
+    <div id="main">
+        <div style="flex-basis:10%">
+            <div class="button12"><a onclick="fieldSetBtn()" href="javascript:void(0)">初期化</a></div>
+            <div class="button12"><a onclick="DTfieldSetBtn()" href="javascript:void(0)">DT砲</a></div>
+        </div>
+        <div id="submain"style="flex-basis:75%">
+            <div id="buttonMenu">
+                <div class="button12" id="startDivId"><a id="startId" onclick="startGame()" href="javascript:void(0)">START</a></div>
+                <div class="button12" id="pauseDivId"><a id="pauseId" onclick="pauseBtn()" href="javascript:void(0)">PAUSE</a></div>
+            </div>
+            <div id="holdCanvasDiv">
+                <canvas id="holdCanvasField" width="120px" height="120px"></canvas>
+            </div>
+            <div id="mainCanvasDiv">
+                <canvas id="canvasField" width="250px" height="525px"></canvas>
+            </div>
+            <div id="nextCanvasDiv">
+                <canvas id="nextCanvasField" width="120px" height="520px"></canvas>
+            </div>
+        </div>
+        <div style="flex-basis:15%">
+            <p>
+                w：ハードドロップ<br>
+                a：左移動<br>
+                d：右移動<br>
+                s：ソフトドロップ<br>
+                →：右回転<br>
+                ←：左回転<br>
+                ↓、スペース：ホールド
+            </p>
+        </div>
+    </div>
+    
+        
+    </div>
+    <div id="footer">
+
+    </div>
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
 </html>

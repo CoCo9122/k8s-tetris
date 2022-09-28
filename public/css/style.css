@@ -1,0 +1,86 @@
+#header{
+    height:100px;
+}
+
+#main{
+    display: flex;
+}
+#main div{
+    background-color: honeydew;
+}
+#submain{
+    display: flex;
+}
+#buttonMenu{
+    width:300px;
+}
+#holdCanvasDiv{
+    padding-top: 25px;
+    padding-right: 25px;
+}
+#nextCanvasDiv{
+    padding-top: 25px;
+    padding-left: 25px;
+}
+
+#startDivId{
+    visibility: visible;
+}
+#pauseDivId{
+  visibility: hidden;
+}
+
+.button12{
+    padding-top: 1em;;
+}
+
+.button12 a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin: 0 auto;
+    padding: 1em 2em;
+    width: 100px;
+    color: #333;
+    font-size: 18px;
+    font-weight: 700;
+    background-color: #cccccc;
+    transition: 0.3s;
+    text-decoration:none;
+  }
+  
+  .button12 a::before {
+    content: '';
+    position: absolute;
+    bottom: -7px;
+    right: -7px;
+    width: 100%;
+    height: 2px;
+    background-color: #bbbbbb;
+    transition: 0.2s ease 0s;
+  }
+  
+  .button12 a::after {
+    content: '';
+    position: absolute;
+    top: 7px;
+    right: -7px;
+    width: 2px;
+    height: 100%;
+    background-color: #bbbbbb;
+    transition: 0.2s ease 0.2s;
+  }
+  
+  .button12 a:hover::before {
+    width: 0%;
+  }
+  
+  .button12 a:hover::after {
+    height: 0%;
+  }
+  
+  .button12 a:hover {
+    text-decoration: none;
+    background-color: #a0c4d3;
+  }
