@@ -21,7 +21,7 @@ spec:
         app: tetris
     spec:
       initContainers:
-      - name: git-pull-initContainer
+      - name: git-pull-initcontainer
         image: willdockerhub/git-sync:v3.5.0
         env:
         - name: GIT_SYNC_REPO
@@ -34,10 +34,10 @@ spec:
           value: "true"
         volumeMounts:
         - name: vol
-          mountPath: /tmp/git/app/
+          mountPath: /tmp/git/
       containers:
       - name: tetris-contianer
-        image: coco9122/nodejs-armv7:0.0.1
+        image: coco9122/nodejs-armv7:0.0.3
         resources:
           limits:
             memory: "32Mi"
